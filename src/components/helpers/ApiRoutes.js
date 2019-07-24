@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://contact-manager-app-server.herokuapp.com/';
 export default {
     user: BASE_URL +'/api/users',
     auth: BASE_URL + '/api/auth',
