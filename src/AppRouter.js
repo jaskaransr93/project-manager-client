@@ -5,17 +5,20 @@ import Login from './components/pages/Login';
 import ContactPage from './components/pages/ContactPage';
 import Register from './components/pages/Register';
 import UserContext from './components/contexts/UserContext';
+import SearchContext from './components/contexts/SearchContext';
 import './AppRouter.css';
 
 const AppRouter = () => {
 
-  const initalValue = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : { name: '', token: ''};
+  const initalValue = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : { name: '', token: ''};
   const [user, setUser] = useState(initalValue);
+  const [search, setSearch] = useState('');
   useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('user', JSON.stringify(user));
   }, [user]);
   return (
     <UserContext.Provider value={{user: user, setUser: setUser}}>
+      <SearchContext.Provider value={{ search: search, setSearch: setSearch }}>
       <BrowserRouter>
         <Switch>
         <Route path='/login' component={Login} />
@@ -23,6 +26,7 @@ const AppRouter = () => {
         <ProtectedRoute user={user} exact path='/' component={ContactPage} />
         </Switch>
       </BrowserRouter>
+      </SearchContext.Provider>
     </UserContext.Provider>
   );
 }

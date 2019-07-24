@@ -17,6 +17,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import UserContext from './contexts/UserContext';
 import {light} from '@material-ui/core/styles/createPalette';
 import blue from '@material-ui/core/colors/blue';
+import SearchContext from './contexts/SearchContext';
 
 
 const useStyles = makeStyles(theme => ({
@@ -125,6 +126,7 @@ const useStyles = makeStyles(theme => ({
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const userContext = useContext(UserContext);
+  const searchContext = useContext(SearchContext);
   const [anchorEl,
     setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl,
@@ -223,17 +225,20 @@ export default function PrimarySearchAppBar() {
           <Typography className={classes.title} variant="h6" noWrap>
             Contact Manager
           </Typography>
-          <IconButton color="inherit" className={classes.addIcon}>
+          {/* <IconButton color="inherit" className={classes.addIcon}>
               <Badge color="secondary">
                 <PersonAdd />
               </Badge>
-          </IconButton>
+          </IconButton> */}
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon/>
             </div>
             <InputBase
               placeholder="Search…"
+              onChange={(e) => {
+                searchContext.setSearch(e.target.value)
+                }}
               classes={{
               root: classes.inputRoot,
               input: classes.inputInput

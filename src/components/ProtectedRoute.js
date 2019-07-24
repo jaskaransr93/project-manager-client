@@ -3,7 +3,6 @@ import {Route, Redirect} from 'react-router-dom';
 import Header from '../components/Header';
 
 const ProtectedRoute = (props) => {
-
   if (!props.user.token) {
     return (<Redirect to='/login'/>);
   }
