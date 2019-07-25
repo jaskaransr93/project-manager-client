@@ -2,14 +2,11 @@ import React, {useEffect, useContext, useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import red from '@material-ui/core/colors/red';
 import blue from '@material-ui/core/colors/blue';
 import IconButton from '@material-ui/core/IconButton';
 import PersonAdd from '@material-ui/icons/PersonAdd';
 import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
-
-import Badge from '@material-ui/core/Badge';
 import ContactItem from '../ContactItem';
 import CreateEditContactModal from '../CreateEditContactModal';
 import axios from 'axios';
@@ -147,6 +144,7 @@ const ContactPage = (props) => {
               {contacts.map((contact) =>{ 
                 if (!searchContext.search || contact.name.toLocaleLowerCase().indexOf(searchContext.search.toLocaleLowerCase()) > -1){
                   return (<ContactItem
+                  key={contact._id}
                 name={contact.name}
                 isSelected={currentContact._id === contact._id}
                 profile_picture={contact.profile_picture}

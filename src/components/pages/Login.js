@@ -40,6 +40,7 @@ const Login = () => {
       } else {
         serverErrors.msg = value.msg;
       }
+      return value;
     })
     return serverErrors;
   };

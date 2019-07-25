@@ -107,7 +107,7 @@ const ContactDetails = (props) => {
                             </Typography>
                             {
                                 contact.phoneNumbers.map((phone) => 
-                                    <React.Fragment>
+                                    <React.Fragment key={phone._id}>
                                     <Typography className={classes.listItem}>
                                         <IconButton color="inherit" className={(phone.primary ? classes.activeFavourite : "") } >
                                             <Phone />
@@ -130,7 +130,7 @@ const ContactDetails = (props) => {
                             </Typography>
                             {
                                 contact.emails.map((email) => 
-                                    <React.Fragment>
+                                    <React.Fragment key={email._id}>
                                     <Typography className={classes.listItem}>
                                         <IconButton color="inherit" className={(email.primary ? classes.activeFavourite : "") } >
                                             <Mail />
@@ -155,8 +155,8 @@ const ContactDetails = (props) => {
                             <List style={{ listStyleType: 'disc'}}>
 
                             {contact.notes &&
-                                contact.notes.map((note) => 
-                                    <ListItem >
+                                contact.notes.map((note, index) => 
+                                    <ListItem key={note + " " + index} >
                                     <ListItemText primary={note} />
                                     </ListItem>
                                 )

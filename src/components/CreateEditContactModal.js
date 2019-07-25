@@ -1,17 +1,15 @@
-import React, {useEffect, useContext, useState, useRef} from 'react';
+import React, {useContext, useState, useRef} from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
 import Favorite from '@material-ui/icons/Favorite';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import { Formik, Field, ErrorMessage, Form, FieldArray } from 'formik';
+import { Formik, Form, FieldArray } from 'formik';
 import ContactSchema from './schemas/Contact';
 import ImgUser from '../assets/images/user.svg';
 import Thumb from './Thumb';
@@ -50,7 +48,7 @@ const useStyles = makeStyles(theme => ({
   }))
 
 const CreateEditContactModal = (props) => {
-    const [intialValues, setInitialValues] = useState({
+    const [intialValues] = useState({
         avatar: '',
         name: '',
         phoneNumbers: [],
@@ -62,7 +60,6 @@ const CreateEditContactModal = (props) => {
     const handleClose = () => {
         props.handleClose();
     }
-    const handleSave = (values) => {}
     const onImgClick = () => {
         inputImage.current.querySelector('input').click();
     }

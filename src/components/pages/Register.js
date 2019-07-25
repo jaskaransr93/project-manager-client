@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/styles';
 import ImgUser from "../../assets/images/user.svg";
@@ -49,6 +49,7 @@ const Register = () => {
       } else {
         serverErrors.msg = value.msg;
       }
+      return value;
     })
     return serverErrors;
   };
